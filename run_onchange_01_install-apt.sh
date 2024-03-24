@@ -6,7 +6,7 @@ add_ppa() {
 }
 
 echo "Adding PPAs..."
-add_ppa webupd8team/indicator-kdeconnect
+# add_ppa webupd8team/indicator-kdeconnect
 
 sudo apt update
 
