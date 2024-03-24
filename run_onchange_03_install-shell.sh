@@ -1,7 +1,11 @@
 #!/bin/bash
 
 if [ ! -d ~/.oh-my-zsh ]; then
+    export RUNZSH="no"
+    export KEEP_ZSHRC="yes"
+    export CHSH="no"
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+    
 fi
 
 if [ ! -d ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k ]; then
