@@ -45,6 +45,7 @@ sudo apt install \
     peek \
     pulseeffects \
     fontconfig \
+    feh \
     rofi \
     zoxide \
     kdeconnect
