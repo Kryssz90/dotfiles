@@ -1,0 +1,116 @@
+{
+  "python.linting.pylintEnabled": false,
+  "python.linting.pylamaEnabled": true,
+  "python.linting.enabled": true,
+  "python.terminal.activateEnvironment": false,
+
+  "favorites.sortOrder": "DESC",
+  "files.watcherExclude": {
+    "**/.git/objects/**": true,
+    "**/.git/subtree-cache/**": true,
+    "**/node_modules/**": true,
+    "**/static/**": true
+  },
+  "editor.fontFamily": "'Cascadia Code', 'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'",
+  "editor.fontLigatures": true,
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    "html",
+    "typescriptreact",
+    "typescript"
+  ],
+
+  "diffEditor.ignoreTrimWhitespace": false,
+  "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": {
+  },
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "prettier.requireConfig": true,
+  "eslint.format.enable": true,
+  "workbench.iconTheme": "material-icon-theme",
+  "go.formatTool": "gofumpt",
+  "go.useLanguageServer": true,
+  "editor.multiCursorModifier": "ctrlCmd",
+  "editor.renderWhitespace": "all",
+  "eslint.alwaysShowStatus": true,
+  "terminal.integrated.fontFamily": "MesloLGS NF",
+  "[python]": {
+    "editor.defaultFormatter": "ms-python.python",
+    "editor.formatOnType": true
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+  },
+  "git.confirmSync": false,
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "[typescript]": {
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+  },
+  "editor.suggestSelection": "first",
+  "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+  "files.exclude": {
+    "**/.classpath": true,
+    "**/.project": true,
+    "**/.settings": true,
+    "**/.factorypath": true
+  },
+  "[java]": {},
+  "explorer.confirmDragAndDrop": false,
+  "notebook.cellToolbarLocation": {
+    "default": "right",
+    "jupyter-notebook": "left"
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+  },
+  "workbench.editorAssociations": {
+    "*.ipynb": "jupyter-notebook",
+    "git-rebase-todo": "default"
+  },
+  "editor.rulers": [80, 120],
+  "go.enableCodeLens": {},
+  "go.liveErrors": {
+    "enabled": true,
+    "delay": 500
+  },
+  "[go]": {
+    "editor.defaultFormatter": "golang.go"
+  },
+  "gitlens.defaultDateShortFormat": "YYYY-MM-DD HH:mm:ss",
+  "gitlens.defaultDateFormat": null,
+  "gitlens.defaultTimeFormat": "hh:mm",
+  "gitlens.defaultDateLocale": "Hun",
+  "jest.autoRun": {},
+  "workbench.colorTheme": "Visual Studio 2019 Dark",
+  "workbench.editor.enablePreview": false,
+  "files.associations": {
+    "*.html": "html"
+  },
+  "[sql]": {
+    "editor.defaultFormatter": "ms-mssql.mssql"
+  },
+  "githubPullRequests.pullBranch": "never",
+  "githubPullRequests.fileListLayout": "flat",
+  "githubPullRequests.createOnPublishBranch": "never",
+  "go.toolsManagement.autoUpdate": true,
+  "editor.inlineSuggest.enabled": true,
+  "[markdown]": {
+    "editor.defaultFormatter": "darkriszty.markdown-table-prettify"
+  },
+  "diffEditor.experimental.showMoves": true,
+  "i18n-ally.dirStructure": "auto",
+  "i18n-ally.enabledFrameworks": [
+    "general"
+  ],
+  "i18n-ally.extract.keyMaxLength": 100,
+  "nxConsole.showNodeVersionOnStartup": false,
+  "github.copilot.enable": {
+    "*": true,
+    "plaintext": false,
+    "markdown": true,
+    "scminput": false
+  }
+}
