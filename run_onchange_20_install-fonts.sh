@@ -9,13 +9,13 @@ mv ttf/Cascadia* ~/.local/share/fonts/
 cd ..
 rm -rf $tmpdir
 
-
-sudo apt install fontconfig
+tmpdir=$(mktemp -d)
+cd $tmpdir
+wget https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Regular.ttf
+wget https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Bold.ttf
+wget https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Italic.ttf
+wget https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Bold%20Italic.ttf
+cp ./MesloLGS* ~/.local/share/fonts/*
 cd ~
-wget https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/Meslo.zip
-unzip Meslo.zip -d .local/share/fonts
-cd .local/share/fonts
-rm *Windows*
-cd ~
-rm Meslo.zip
+rm -rf $tmpdir
 fc-cache -fv
