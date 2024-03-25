@@ -15,7 +15,7 @@ wget https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20R
 wget https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Bold.ttf
 wget https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Italic.ttf
 wget https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Bold%20Italic.ttf
-cp ./MesloLGS* ~/.local/share/fonts/*
+cp ./MesloLGS* ~/.local/share/fonts/
 cd ~
 rm -rf $tmpdir
 fc-cache -fv
