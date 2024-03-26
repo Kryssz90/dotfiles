@@ -22,7 +22,7 @@ fi
 sudo apt update
 
 echo "Installing APT packages..."
-sudo apt install \
+sudo apt install -y \
     arandr \
     curl \
     diffutils \
@@ -48,5 +48,7 @@ sudo apt install \
     feh \
     rofi \
     zoxide \
+    python3 \
+    python3-pip \
     kdeconnect
 

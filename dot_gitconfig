@@ -1,3 +1,5 @@
 [user]
     name = Krisztián Zsobrák
     email = kryssz90@gmail.com
+[init]
+    defaultBranch = main
