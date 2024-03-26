@@ -15,8 +15,11 @@ if ! grep -q "sur5r-i3" /etc/apt/sources.list /etc/apt/sources.list.d/*; then
     sudo apt install ./keyring.deb
     echo "deb http://debian.sur5r.net/i3/ $(grep '^DISTRIB_CODENAME=' /etc/lsb-release | cut -f2 -d=) universe" | sudo tee /etc/apt/sources.list.d/sur5r-i3.list
     sudo apt update
-    sudo apt install i3
+    sudo apt install i3 -y
     rm keyring.deb
+    echo "I3 installed"
+else
+    echo "I3 will not be installed"
 fi
 
 sudo apt update
