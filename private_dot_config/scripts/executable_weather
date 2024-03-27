@@ -1,87 +1,42 @@
-#!/usr/bin/env perl
-#
-#   Copyright 2021 Robert Unverzagt <robert.unverzagt@protonmail.com>
-#
-#   This program is free software: you can redistribute it and/or modify
-#   it under the terms of the GNU General Public License as published by
-#   the Free Software Foundation, either version 3 of the License, or
-#   (at your option) any later version.
-#
-#   This program is distributed in the hope that it will be useful,
-#   but WITHOUT ANY WARRANTY; without even the implied warranty of
-#   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#   GNU General Public License for more details.
-#
-#   You should have received a copy of the GNU General Public License
-#   along with this program.  If not, see <https://www.gnu.org/licenses/>.
+#!/usr/bin/python3
 
-use strict;
-use warnings;
-use JSON;
-use Data::Dumper;
-use Getopt::Long;
+from xml.etree import ElementTree as ET
+import requests
 
-# Default option values (default location is Portland, OR)
-my $lat = $ENV{LAT} || "45.52";
-my $lon = $ENV{LON} || "-122.70";
+LAT = 59.9168873
+LON = 10.7287067
+URL = f"https://api.met.no/weatherapi/locationforecast/2.0/compact?lat={LAT}&lon={LON}"
 
-sub help {
-    print "Usage: weather_NOAA [-lat <latitude>] [-lon <longitude>]\n";
-    print "-lat <latitude>: the latitude coordinate of your location\n";
-    print "-lon <longitude>: the longitude coordinate of your location\n\n";
-    print "NOTE: Only works in areas where NOAA publishes forecasts (namely the USA)\n";
-    exit 0;
-}
+CLIENT_ID = "6930df44-167c-46b4-9c27-9d2cee99e8e6"
 
-GetOptions( "help|h"    => \&help,
-            "lat=s"     => \$lat,
-            "lon=s"     => \$lon,
-);
+def fetch_url_content(url):
+    user_agent = "Client-ID " + CLIENT_ID
+    headers = {"User-Agent": user_agent}
+    response = requests.get(url, headers=headers)
+    response.raise_for_status()
+    return response.json()
 
-# Use CURL to retrieve station ID and gridpoint
-my $json;
-{
-    open( my $fh, 'curl -s https:\/\/api.weather.gov\/points\/'.$lat.','.$lon.' |') or die;
-    local $/;
-    $json = <$fh>;
-    close $fh;
-}
+resp = fetch_url_content(URL)
+details = resp['properties']['timeseries'][0]['data']['instant']['details']
+temperature = details['air_temperature']
+wind_speed = details['wind_speed']
+wind_direction = details['wind_from_direction']
+cloud_area_fraction = int(details['cloud_area_fraction'])
+relative_humidity = int(details['relative_humidity'])
+percipitation_amount = 0
+try:
+    percipitation_amount = details['precipitation_amount']
+except KeyError:
+    pass
 
+parts = [
+    f"{temperature}",
+    f" {relative_humidity}%",
+    f"󱨵  {cloud_area_fraction}%",
+]
 
-# Decode the json data into a perl native datatype, and extract the data we need
-my $decoded = decode_json($json);
+if percipitation_amount > 0:
+    parts.append(f" {percipitation_amount}mm")
 
-# Detect error
-if ($decoded->{"status"})
-{
-    print "ERROR: ".$decoded->{'title'}."\n";
-    print $decoded->{'detail'}."\n";
-    die;
-}
+print (" | ".join(parts))
 
-my $stationID   = $decoded->{'properties'}->{'gridId'};
-my $Xcoord      = $decoded->{'properties'}->{'gridX'};
-my $Ycoord      = $decoded->{'properties'}->{'gridY'};
-
-# Use CURL to retrieve the forecast from NOAA
-{
-    open( my $fh, 'curl -s https:\/\/api.weather.gov\/gridpoints\/'.$stationID.'\/'.$Xcoord.','.$Ycoord.'\/forecast\/hourly |') or die;
-    local $/;
-    $json = <$fh>;
-    close $fh;
-}
-
-$decoded = decode_json($json);
-
-if ($decoded->{"status"})
-{
-    print "ERROR: ".$decoded->{'title'}."\n";
-    print $decoded->{'detail'}."\n";
-    die;
-}
-
-# Extract just the forecast for the next hour
-my $forecast = $decoded->{'properties'}->{'periods'}->[0];
-
-# Use this forecast data to construct the output string
-print $forecast->{'temperature'}."°".$forecast->{'temperatureUnit'}." ".$forecast->{'shortForecast'}."\n";

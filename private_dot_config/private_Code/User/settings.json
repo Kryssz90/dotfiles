@@ -11,7 +11,7 @@
     "**/node_modules/**": true,
     "**/static/**": true
   },
-  "editor.fontFamily": "'Cascadia Code', 'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'",
+  "editor.fontFamily": "'FiraCode Nerd Font', 'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'",
   "editor.fontLigatures": true,
   "eslint.validate": [
     "javascript",
@@ -36,7 +36,7 @@
   "editor.multiCursorModifier": "ctrlCmd",
   "editor.renderWhitespace": "all",
   "eslint.alwaysShowStatus": true,
-  "terminal.integrated.fontFamily": "MesloLGS NF",
+  "terminal.integrated.fontFamily": "FiraCode Nerd Font",
   "[python]": {
     "editor.defaultFormatter": "ms-python.python",
     "editor.formatOnType": true

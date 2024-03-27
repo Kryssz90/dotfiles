@@ -1,6 +1,0 @@
-#!/usr/bin/python3
-
-LAT = 59.9165384
-LON = 10.7307361
-
-print("Hello World")

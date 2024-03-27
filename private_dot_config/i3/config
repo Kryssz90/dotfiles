@@ -205,11 +205,12 @@ bindsym $mod+r mode "resize"
 bar {
         status_command i3blocks -c /home/$USER/.config/i3blocks/i3blocks.conf
         i3bar_command i3bar --transparency
+        separator_symbol " | "
 	tray_output none
-	font pango: Droid Sans Mono 11
+	font pango: Terminess 11
 	colors {
 		background $bar-color
-		separator #191919
+		separator #FFFFFF
 		#			border		background	text
 		focused_workspace	$focused-ws	$focused-ws	$text
 		inactive_workspace	$in-bgcolor	$in-bgcolor	$text

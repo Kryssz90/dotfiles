@@ -3,3 +3,6 @@
     email = kryssz90@gmail.com
 [init]
     defaultBranch = main
+[credential "https://github.com"]
+	helper = 
+	helper = !/usr/bin/gh auth git-credential
