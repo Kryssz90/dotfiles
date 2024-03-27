@@ -22,6 +22,17 @@ else
     echo "I3 will not be installed"
 fi
 
+if ! command -v gh &> /dev/null
+then
+    echo "gh could not be found, installing..."
+    sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-key C99B11DEB97541F0
+    sudo apt-add-repository https://cli.github.com/packages
+    sudo apt update
+    sudo apt install gh
+else
+    echo "gh is already installed."
+fi
+
 sudo apt update
 
 echo "Installing APT packages..."
