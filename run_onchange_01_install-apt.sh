@@ -47,6 +47,9 @@ sudo apt install -y \
     mc \
     nomacs \
     pulseaudio \
+    gnome-screenshot \
+    htop \
+    guvcview \
     tmux \
     vlc \
     whois \
