@@ -29,3 +29,5 @@ if [ ! -f ~/.local/bin/greenclip ]; then
     cd ~
     rm -rf $tmpdir
 fi
+
+eval "$(zoxide init zsh)"
