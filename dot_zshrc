@@ -38,3 +38,5 @@ export PATH=$PATH:/usr/local/go/bin
 if [ -f ~/.local.zshrc ]; then
     source ~/.local.zshrc
 fi
+
+eval "$(zoxide init zsh)"
