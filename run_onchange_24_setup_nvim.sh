@@ -32,3 +32,4 @@ rm -rf ~/.local/share/nvim_backup
 # Install plugins
 echo "Installing plugins"
 nvim --headless -c 'MasonInstallAll' -c 'qall'
+nvim --headless -c 'TSInstall all' -c 'qall'
