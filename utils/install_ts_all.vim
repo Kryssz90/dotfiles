@@ -2,18 +2,23 @@
 " Start the TSInstall process
 silent! TSInstall all
 
-" Function to check if installation is complete
+" Function to check if installation is possibly complete
 function! CheckInstallComplete(timer_id)
-  " Check if there are still running jobs (this is a simplistic check)
-  echom "Check if TSInstall finished"
-  if len(nvim_get_runtime_file('plugin/*.so', v:true)) == expected_number_of_parsers
-    echom "Installation complete"
-    quitall
-  else
-    " Extend or adjust the sleep time as necessary
+  " This is a simplistic method to check if Treesitter parsers are still installing
+  " The command below lists all active jobs, adjust as necessary for accuracy
+  redir => l:jobs
+  silent! exec "jobs"
+  redir END
+
+  " If there are no active jobs related to Treesitter, assume installation is complete
+  if l:jobs =~ 'Treesitter.*running'
+    " If still running, check again after some time
     call timer_start(10000, 'CheckInstallComplete')
+  else
+    echom "Installation likely complete"
+    quitall
   endif
 endfunction
 
-" Initial check after 10 seconds
+" Initial check after an arbitrary delay to allow installations to start
 call timer_start(10000, 'CheckInstallComplete')

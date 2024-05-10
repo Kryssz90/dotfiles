@@ -33,6 +33,7 @@ rm -rf ~/.local/share/nvim_backup
 echo "Installing plugins"
 nvim --headless -c 'MasonInstallAll' -c 'quitall'
 
+chezmoi cd
 cd ./utils
 nvim --headless -u NONE -S install_ts_all.vim
 
