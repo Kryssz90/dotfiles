@@ -10,4 +10,4 @@ sudo rm -rf /usr/local/go
 sudo tar -C /usr/local -xzf go$GO_VERSION.linux-amd64.tar.gz
 
 # Install gopls
-go install golang.org/x/tools/gopls@latest
+/usr/local/go/bin/go install golang.org/x/tools/gopls@latest
