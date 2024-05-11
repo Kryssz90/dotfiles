@@ -1,4 +1,4 @@
-#/bin/sh
+#!/bin/sh
 
 # Back up the current configuration
 echo "Backing up the current configuration"
@@ -17,10 +17,14 @@ rm -rf ~/.local/share/nvim
 echo "Installing nvchad"
 git clone https://github.com/NvChad/starter ~/.config/nvim
 
+rm -rf ~/.config/nvim/.git
+
 # Restore the backup, overwriting the new configuration
 echo "Restoring the backup"
-cp -rf ~/.config/nvim_backup/* ~/.config/nvim
-cp -rf ~/.local/share/nvim_backup/* ~/.local/share/nvim
+mkdir -p ~/.local/share/nvim
+cp -r ~/.config/nvim_backup/lua/* ~/.config/nvim/lua
+cp -r ~/.local/share/nvim_backup/* ~/.local/share/nvim
+
 
 # Remove backup
 rm -rf ~/.config/nvim_backup
@@ -28,4 +32,10 @@ rm -rf ~/.local/share/nvim_backup
 
 # Install plugins
 echo "Installing plugins"
-nvim --headless -c 'MasonInstallAll' -c 'qall'
+nvim --headless -c 'Lazy install' -c 'quitall'
+nvim --headless -c 'MasonInstallAll' -c 'quitall'
+
+echo "After the installation, start 'nvim', and run ':TSInstall all' to install tree-sitter parsers"
+echo "Press enter to continue"
+
+read -r DUMMY
