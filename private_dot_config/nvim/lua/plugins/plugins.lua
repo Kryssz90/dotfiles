@@ -34,7 +34,14 @@ local plugins = {
             require("nvchad.configs.lspconfig").defaults()
             require("configs.lspconfig")
         end
-  }
+    },
+    {
+        "dhruvasagar/vim-table-mode",
+        ft = {"markdown"},
+        config = function()
+            vim.g.table_mode_corner = '|'
+        end
+    },
 
 }
 
