@@ -111,11 +111,56 @@ local plugins = {
     "folke/trouble.nvim",
     dependencies = { "nvim-tree/nvim-web-devicons" },
     opts = {
-     -- your configuration comes here
-     -- or leave it empty to use the default settings
-     -- refer to the configuration section below
+      -- your configuration comes here
+      -- or leave it empty to use the default settings
+      -- refer to the configuration section below
     },
+  },
+  {
+    "nvim-treesitter/nvim-treesitter",
+    event = { "BufReadPre", "BufNewFile" },
+    build = ":TSUpdate",
+    dependencies = {
+      "windwp/nvim-ts-autotag",
+    },
+    config = function()
+      local treesitter = require("nvim-treesitter.configs")
+
+      treesitter.setup({
+
+        highlight = {
+          enable = true,
+        },
+        indent = {
+          enable = true,
+        },
+        autotag = {
+          enable = true,
+        },
+        ensure_installed = {
+          "bash",
+          "css",
+          "dockerfile",
+          "go",
+          "gomod",
+          "html",
+          "javascript",
+          "json",
+          "lua",
+          "python",
+          "rust",
+          "scss",
+          "toml",
+          "tsx",
+          "typescript",
+          "yaml",
+          "markdown",
+
+        },
+      })
+    end
   }
+
 
 }
 

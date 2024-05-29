@@ -115,5 +115,6 @@
   },
   "[lua]": {
     "editor.defaultFormatter": "sumneko.lua"
-  }
+  },
+  "github.copilot.editor.enableAutoCompletions": true
 }
