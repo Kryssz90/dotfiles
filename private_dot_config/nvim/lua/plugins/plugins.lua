@@ -36,6 +36,9 @@ local plugins = {
     end
   },
   {
+    'markwoodhall/vim-codelens'
+  },
+  {
     "dhruvasagar/vim-table-mode",
     ft = { "markdown" },
     config = function()
@@ -110,6 +113,14 @@ local plugins = {
   {
     "folke/trouble.nvim",
     dependencies = { "nvim-tree/nvim-web-devicons" },
+    keys= {
+      { "<leader>tx", "<cmd>TroubleToggle<cr>", desc = "Open/close trouble list" },
+      { "<leader>tw", "<cmd>TroubleToggle lsp_workspace_diagnostics<cr>", desc = "Open/close workspace diagnostics" },
+      { "<leader>td", "<cmd>TroubleToggle lsp_document_diagnostics<cr>", desc = "Open/close document diagnostics" },
+      { "<leader>tl", "<cmd>TroubleToggle loclist<cr>", desc = "Open/close loclist" },
+      { "<leader>tq", "<cmd>TroubleToggle quickfix<cr>", desc = "Open/close quickfix" },
+      { "<leader>gr", "<cmd>TroubleToggle lsp_references<cr>", desc = "Open/close references" },
+    },
     opts = {
       -- your configuration comes here
       -- or leave it empty to use the default settings
@@ -159,7 +170,53 @@ local plugins = {
         },
       })
     end
+  },
+  {
+    "lukas-reineke/indent-blankline.nvim",
+    event={"BufReadPre", "BufNewFile"},
+    main="ibl",
+    opts={
+      indent={
+        char='',
+      }
+    }
+  },
+  {
+    "kylechui/nvim-surround",
+    event = { "BufReadPre", "BufNewFile" },
+    version = "*",
+    config = true,
+  },
+  {
+    "lewis6991/gitsigns.nvim",
+    event = { "BufReadPre", "BufNewFile" },
+    opts = {
+      on_attach = function(bufnr)
+        local gs = package.loaded.gitsigns
+
+        local function map(mode, l, r, desc)
+          vim.keymap.set(mode, l, r, {buffer = bufnr, desc = desc})
+        end
+
+        map("n", "3h", gs.next_hunk, "Next Hunk")
+        map("n", "1h", gs.prev_hunk, "Prev Hunk")
+
+        map("n", "<leader>hs", gs.stage_hunk, "Stage Hunk")
+        map("n", "<leader>hr", gs.reset_hunk, "Reset Hunk")
+        map("v", "<leader>hs", function()
+          gs.stage_hunk({vim.fn.line("."), vim.fn.line("v")})
+        end, "Stage Hunk")
+        map("v", "<leader>hr", function()
+          gs.reset_hunk({vim.fn.line("."), vim.fn.line("v")})
+        end, "Reset Hunk")
+
+        map("n", "<leader>hb", gs.blame_line, "Blame")
+
+      end
+    }
   }
+
+
 
 
 }

@@ -67,5 +67,6 @@ sudo apt install -y \
     zoxide \
     python3 \
     python3-pip \
-    kdeconnect
+    kdeconnect \
+    ripgrep 
 

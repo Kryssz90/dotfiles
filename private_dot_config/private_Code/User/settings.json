@@ -38,11 +38,11 @@
   "eslint.alwaysShowStatus": true,
   "terminal.integrated.fontFamily": "FiraCode Nerd Font",
   "[python]": {
-    "editor.defaultFormatter": "ms-python.python",
+    "editor.defaultFormatter": "ms-python.autopep8",
     "editor.formatOnType": true
   },
   "[typescriptreact]": {
-    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "git.confirmSync": false,
   "typescript.updateImportsOnFileMove.enabled": "always",
@@ -110,11 +110,12 @@
   "github.copilot.enable": {
     "*": true,
     "plaintext": false,
-    "markdown": true,
+    "markdown": false,
     "scminput": false
   },
   "[lua]": {
     "editor.defaultFormatter": "sumneko.lua"
   },
-  "github.copilot.editor.enableAutoCompletions": true
+  "github.copilot.editor.enableAutoCompletions": true,
+  "workbench.colorCustomizations": {}
 }

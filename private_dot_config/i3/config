@@ -237,6 +237,20 @@ mode "$mode_system" {
 
 bindsym $mod+End mode "$mode_system"
 
+set $mode_screen Screen (l) Low, (n) Normal, (h) High, (B) Enable Blue Filter, (Shift+B) Disable Blue Filter
+mode "$mode_screen" {
+    bindsym l exec ddcutil setvcp 12 20 10 10, mode "default"
+    bindsym n exec ddcutil setvcp 12 50 10 100, mode "default"
+    bindsym h exec ddcutil setvcp 12 100 10 100, mode "default"
+    bindsym b exec ddcutil setvcp 16 100 18 50 1A 50, mode "default"
+    bindsym Shift+b exec ddcutil setvcp 16 100 18 100 1A 100, mode "default"
+    
+
+    bindsym Escape mode "default"
+}
+
+bindsym $mod+Home mode "$mode_screen"
+
 bindsym $mod+l exec --no-startup-id i3lock-fancy
 
 bindsym button3 floating toggle

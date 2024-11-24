@@ -1,8 +1,6 @@
-[user]
-    name = Krisztián Zsobrák
-    email = kryssz90@gmail.com
+[include]
+    path = ./.user.gitconfig
 [init]
     defaultBranch = main
-[credential "https://github.com"]
-	helper = 
-	helper = !/usr/bin/gh auth git-credential
+[push]
+	autoSetupRemote = true
